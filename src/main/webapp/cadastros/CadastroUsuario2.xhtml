@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+		<f:metadata>
+		<f:viewAction action="#{usuarioBean.prepararCadastro}" />
+	</f:metadata>
+	
+<h:head>
+	<title>Cadastro usuario 2</title>
+</h:head>
+<h:body>
+	<h:form>
+
+			<div align="center">
+				<h:panelGrid columns="2">
+
+					<h:outputLabel value="Usuário: " for="usuario" />
+					<h:inputText id="usuario" value="#{usuarioBean.usuario}" />
+
+					<h:outputLabel value="Login: " for="login" />
+					<h:inputText id="login" value="#{usuarioBean.login}" />
+
+					<h:outputLabel value="Senha: " for="senha" />
+					<h:inputSecret id="senha" value="#{usuarioBean.senha}" />
+
+					<h:outputLabel value="Confirmar senha: " for="confirmarSenha" />
+					<h:inputSecret id="confirmarSenha" />
+
+
+					<h:commandButton value="Salvar" />
+
+				</h:panelGrid>
+
+			</div>
+
+			<p />
+
+			<div align="center">
+				<h:dataTable value="#{usuarioBean.usuarios}" var="usuario"
+					border="1" cellspacing="1" cellpadding="2">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Usuário" />
+						</f:facet>
+						<h:outputText value="#{usuario.nome}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Login" />
+						</f:facet>
+						<h:outputText value="#{usuario.login}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Ações" />
+						</f:facet>
+						<h:commandButton value="Alterar" action="#{usuarioBean.alterar}"
+							class="btn btn-primary">
+							<f:param value="#{usuario.idUsuario}" name="idUsuario" />
+						</h:commandButton>
+						<h:commandButton value="Excluir2" action="#{usuarioBean.excluir}"
+							class="btn btn-danger" />
+						<!-- 						<f:param value="#{usuario.idUsuario}" name="idUsuario" /> -->
+						<!-- 					</h:commandButton> -->
+					</h:column>
+				</h:dataTable>
+			</div>
+
+
+	</h:form>
+</h:body>
+</html>
